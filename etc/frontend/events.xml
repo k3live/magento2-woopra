@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Woopra Module for Magento
+ *
+ * @package   Woopra_Analytics
+ * @author    K3Live for Woopra <support@woopra.com>
+ * @copyright 2017 Copyright (c) Woopra (http://www.woopra.com/)
+ * @license   Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="woopra_controller_action_before" instance="Woopra\Analytics\Observer\Observer" />
+    </event>
+    <event name="catalog_product_compare_add_product">
+        <observer name="woopra_catalog_product_compare_add_product" instance="Woopra\Analytics\Observer\ProductCompareAddObserver" />
+    </event>
+    <event name="catalog_product_compare_remove_product">
+    <observer name="woopra_catalog_product_compare_remove_product" instance="Woopra\Analytics\Observer\ProductCompareRemoveObserver" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="woopra_checkout_cart_product_add_after" instance="Woopra\Analytics\Observer\CartAddObserver" />
+    </event>
+    <event name="customer_login">
+        <observer name="woopra_customer_login" instance="Woopra\Analytics\Observer\CustomerLoginObserver" />
+    </event>
+    <event name="newsletter_manage_save">
+        <observer name="woopra_newsletter_manage_save" instance="Woopra\Analytics\Observer\NewsletterManageObserver" />
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="woopra_sales_quote_remove_item" instance="Woopra\Analytics\Observer\CartRemoveObserver" />
+    </event>
+    <event name="wishlist_add_product">
+        <observer name="woopra_wishlist_add_product" instance="Woopra\Analytics\Observer\WishlistAddObserver" />
+    </event>
+</config>

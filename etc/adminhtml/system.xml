@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Woopra Module for Magento
+ *
+ * @package   Woopra_Analytics
+ * @author    K3Live for Woopra <support@woopra.com>
+ * @copyright 2017 Copyright (c) Woopra (http://www.woopra.com/)
+ * @license   Open Software License (OSL 3.0)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="woopra" translate="label" sortOrder="10">
+            <label>Woopra</label>
+        </tab>
+        <section id="woopra_analytics" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Woopra Analytics</label>
+            <tab>woopra</tab>
+            <resource>Woopra_Analytics::woopra_analytics</resource>
+            <group id="woopra_basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" expanded="1">
+                <label>Basic Woopra Setup</label>
+                <field id="enabled" translate="" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Enable or disable the Woopra module
+                    </comment>
+                </field>
+                <field id="hostname" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hostname</label>
+                    <comment>
+                        Enter hostname to track (ie: example.com).
+                    </comment>
+                </field>
+                <field id="test" translate="" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="woopra_advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+                <label>Advanced Woopra Setup</label>
+                <field id="subdomain" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subdomain</label>
+                    <comment>
+                        Enter subdomain to track (ie: subdomain).
+                    </comment>
+                </field>
+                <field id="visitor_timeout" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                    <label>Visitor Timeout</label>
+                    <comment>
+                        The idle time in minutes after which visitors are considered no longer on your website (Default: 30)
+                    </comment>
+                </field>
+                <field id="track_url_parameters" translate="" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Track URL Parameters</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        Include queries in the url (Default No)
+                    </comment>
+                </field>
+                <field id="tracking_cookie_expiration" translate="" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                    <label>Tracking Cookie Expiration</label>
+                    <comment>
+                        The tracking cookie expiration in days (Default: 730)
+                    </comment>
+                </field>
+                <field id="tracking_cookie_name" translate="" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tracking Cookie Name</label>
+                    <comment>
+                        Change the name of the cookie stored by Woopra (Default: wooTracker)
+                    </comment>
+                </field>
+                <field id="tracking_cookie_domain" translate="" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tracking Cookie Domain</label>
+                    <comment>
+                        Change the tracking cookie domain
+                    </comment>
+                </field>
+                <field id="tracking_cookie_path" translate="" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tracking Cookie Path</label>
+                    <comment>
+                        Change the tracking cookie path (Default: /)
+                    </comment>
+                </field>
+                <field id="ping" translate="" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ping</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Enable/Disable the periodic pings (Default: Enable)
+                    </comment>
+                </field>
+                <field id="ping_interval" translate="" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                    <label>Ping Interval</label>
+                    <comment>
+                        Change ping interval (Default: 12000 milliseconds)
+                    </comment>
+                </field>
+                <field id="download_tracking" translate="" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Download Tracking</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Enable/Disable download tracking (Default: Disable)
+                    </comment>
+                </field>
+                <field id="download_tracking_pause" translate="" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                    <label>Download Tracking Pause</label>
+                    <comment>
+                        Change download pause to guarantee the tracking request is sent (Default: 200 milliseconds)
+                    </comment>
+                </field>
+                <field id="outgoing_tracking" translate="" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outgoing Link Tracking</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Enable/Disable outgoing links tracking (Default: Disable)
+                    </comment>
+                </field>
+                <field id="outgoing_tracking_pause" translate="" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                    <label>Outgoing Link Tracking Pause</label>
+                    <comment>
+                        Change outgoing link pause to guarantee the tracking request is sent (Default: 400 milliseconds)
+                    </comment>
+                </field>
+                <field id="outgoing_ignore_subdomain" translate="" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outgoing Ignore Subdomain</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Do not include links to subdomains as outgoing links (Default: Enable)
+                    </comment>
+                </field>
+                <field id="hide_campaign" translate="" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide Campaign</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>
+                        Enabling this option will remove campaign properties from the URL when they’re captured (Default: Disabled)
+                    </comment>
+                </field>
+            </group>
+            <group id="woopra_outputs" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+                <label>Name/Disable Woopra Outputs</label>
+                <comment>You can disable outputs here that you do not want to use. On some servers a performance gain may be noticed by disabling unused calls.</comment>
+                <field id="name" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Name</label>
+                    <comment>
+                        Customer name output name (empty to disable). Note: This is a reserved property and should not be changed!
+                    </comment>
+                </field>
+                <field id="email" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Email</label>
+                    <comment>
+                        Customer email output name (empty to disable). Note: This is a reserved property and should not be changed!
+                    </comment>
+                </field>
+                <field id="company" translate="" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Company</label>
+                    <comment>
+                        Customer company output name (empty to disable). Note: This is a reserved property and should not be changed!
+                    </comment>
+                </field>
+                <field id="customer_location" translate="" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Location</label>
+                    <comment>
+                        Customer location output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_phone" translate="" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Phone</label>
+                    <comment>
+                        Customer phone output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_group" translate="" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Group</label>
+                    <comment>
+                        Customer group output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_lifetime_sales" translate="" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lifetime Sales</label>
+                    <comment>
+                        Customer lifetime sales output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_number_orders" translate="" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lifetime Orders Placed</label>
+                    <comment>
+                        Customer number of orders output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_create_date" translate="" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create Account Date</label>
+                    <comment>
+                        Customer account creation date output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_cart_items" translate="" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Total Items in Cart</label>
+                    <comment>
+                        Customer total items in cart output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_cart_total" translate="" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cart Total</label>
+                    <comment>
+                        Customer cart total output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_wishlist_items" translate="" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Total Items in Wishlist</label>
+                    <comment>
+                        Customer total items in wishlist output name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_wishlist_total" translate="" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Wishlist Total</label>
+                    <comment>
+                        Customer wishlist total output name (empty to disable).
+                    </comment>
+                </field>
+            </group>
+            <group id="woopra_events" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+                <label>Name/Disable Woopra Event Tracking</label>
+                <comment>You can disable event tracking here that you do not want to use. On some servers a performance gain may be noticed by disabling unused calls.</comment>
+                <field id="catalog_search" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Catalog Search</label>
+                    <comment>
+                        Catalog search event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="changed_password" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Changed Password</label>
+                    <comment>
+                        Changed password event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_billing_address" translate="" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Billing Address</label>
+                    <comment>
+                        Checkout step billing address event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_shipping_address" translate="" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Shipping Address</label>
+                    <comment>
+                        Checkout step shipping address event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_shipping_method" translate="" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Shipping Method</label>
+                    <comment>
+                        Checkout step billing address event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_payment_method" translate="" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Payment Method</label>
+                    <comment>
+                        Checkout step payment method event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_review" translate="" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Review</label>
+                    <comment>
+                        Checkout step review event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="checkout_success" translate="" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Success</label>
+                    <comment>
+                        Checkout success event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="cms_no_route" translate="" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CMS No Route</label>
+                    <comment>
+                        CMS no route (404) event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="contact_form_sent" translate="" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Contact Form Sent</label>
+                    <comment>
+                        Contact form sent event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="coupon_added" translate="" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Coupon Code Added</label>
+                    <comment>
+                        Coupon code added event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="coupon_removed" translate="" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Coupon Code Removed</label>
+                    <comment>
+                        Coupon code removed event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_create_account" translate="" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Create Account</label>
+                    <comment>
+                        Customer create account event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_create_account_success" translate="" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Create Account Success</label>
+                    <comment>
+                        Customer create account success event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_login" translate="" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Login</label>
+                    <comment>
+                        Customer login event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="customer_logout" translate="" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Logout</label>
+                    <comment>
+                        Customer logout event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="estimate_post" translate="" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Estimate Post</label>
+                    <comment>
+                        Estimate post event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="forgot_password" translate="" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Forgot Password</label>
+                    <comment>
+                        Forgot password event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="newsletter_subscribed" translate="" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Newsletter Subscribed</label>
+                    <comment>
+                        Newsletter subscribed event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="newsletter_unsubscribed" translate="" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Newsletter Unsubscribed</label>
+                    <comment>
+                        Newsletter unsubscribed event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_added_to_cart" translate="" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Added To Cart</label>
+                    <comment>
+                        Product added to cart event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_removed_from_cart" translate="" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Removed From Cart</label>
+                    <comment>
+                        Product removed from cart event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_added_to_compare" translate="" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Added To Compare</label>
+                    <comment>
+                        Product added to compare event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_removed_from_compare" translate="" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Removed From Compare</label>
+                    <comment>
+                        Product removed from compare event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_added_to_wishlist" translate="" type="text" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Added To Wishlist</label>
+                    <comment>
+                        Product added to wishlist event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_removed_from_wishlist" translate="" type="text" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Removed From Wishlist</label>
+                    <comment>
+                        Product removed from wishlist event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_purchased" translate="" type="text" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Purchased</label>
+                    <comment>
+                        Product purchased name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_review_read" translate="" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Review Read</label>
+                    <comment>
+                        Product review read event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="product_review_posted" translate="" type="text" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Review Posted</label>
+                    <comment>
+                        Product review posted event tracking name (empty to disable).
+                    </comment>
+                </field>
+                <field id="sendfriend_product" translate="" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Email to Friend</label>
+                    <comment>
+                        Product email to a friend event tracking name (empty to disable).
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

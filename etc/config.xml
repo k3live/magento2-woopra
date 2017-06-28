@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Woopra Module for Magento
+ *
+ * @package   Woopra_Analytics
+ * @author    K3Live for Woopra <support@woopra.com>
+ * @copyright 2017 Copyright (c) Woopra (http://www.woopra.com/)
+ * @license   Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <woopra_analytics>
+            <woopra_basic>
+                <enabled>1</enabled>
+                <hostname></hostname>
+                <test>0</test>
+            </woopra_basic>
+            <woopra_advanced>
+                <subdomain></subdomain>
+                <visitor_timeout></visitor_timeout>
+                <track_url_parameters>0</track_url_parameters>
+                <tracking_cookie_expiration></tracking_cookie_expiration>
+                <tracking_cookie_name></tracking_cookie_name>
+                <tracking_cookie_domain></tracking_cookie_domain>
+                <tracking_cookie_path></tracking_cookie_path>
+                <ping>1</ping>
+                <ping_interval></ping_interval>
+                <download_tracking>0</download_tracking>
+                <download_tracking_pause></download_tracking_pause>
+                <outgoing_tracking>0</outgoing_tracking>
+                <outgoing_tracking_pause></outgoing_tracking_pause>
+                <outgoing_ignore_subdomain>1</outgoing_ignore_subdomain>
+                <hide_campaign></hide_campaign>
+            </woopra_advanced>
+            <woopra_outputs>
+                <name>name</name>
+                <email>email</email>
+                <company>company</company>
+                <customer_location>magento customer_location</customer_location>
+                <customer_phone>magento customer_phone</customer_phone>
+                <customer_group>magento customer_group</customer_group>
+                <customer_lifetime_sales>magento customer_lifetime_sales</customer_lifetime_sales>
+                <customer_number_orders>magento customer_number_orders</customer_number_orders>
+                <customer_create_date>magento customer_create_date</customer_create_date>
+                <customer_cart_items>magento customer_cart_items</customer_cart_items>
+                <customer_cart_total>magento customer_cart_total</customer_cart_total>
+                <customer_wishlist_items>magento customer_wishlist_items</customer_wishlist_items>
+                <customer_wishlist_total>magento customer_wishlist_total</customer_wishlist_total>
+            </woopra_outputs>
+            <woopra_events>
+                <catalog_search>magento catalog_search</catalog_search>
+                <changed_password>magento changed_password</changed_password>
+                <checkout_billing_address>magento checkout_billing_address</checkout_billing_address>
+                <checkout_shipping_address>magento checkout_shipping_address</checkout_shipping_address>
+                <checkout_shipping_method>magento checkout_shipping_method</checkout_shipping_method>
+                <checkout_payment_method>magento checkout_payment_method</checkout_payment_method>
+                <checkout_review>magento checkout_review</checkout_review>
+                <checkout_success>magento checkout_success</checkout_success>
+                <cms_no_route>magento cms_no_route</cms_no_route>
+                <contact_form_sent>magento contact_form_sent</contact_form_sent>
+                <coupon_added>magento coupon_added</coupon_added>
+                <coupon_removed>magento coupon_removed</coupon_removed>
+                <customer_create_account>magento customer_create_account</customer_create_account>
+                <customer_create_account_success>magento customer_create_account_success</customer_create_account_success>
+                <customer_login>magento customer_login</customer_login>
+                <customer_logout>magento customer_logout</customer_logout>
+                <estimate_post>magento estimate_post</estimate_post>
+                <forgot_password>magento forgot_password</forgot_password>
+                <newsletter_subscribed>magento newsletter_subscribed</newsletter_subscribed>
+                <newsletter_unsubscribed>magento newsletter_unsubscribed</newsletter_unsubscribed>
+                <product_added_to_cart>magento product_added_to_cart</product_added_to_cart>
+                <product_removed_from_cart>magento product_removed_from_cart</product_removed_from_cart>
+                <product_added_to_compare>magento product_added_to_compare</product_added_to_compare>
+                <product_removed_from_compare>magento product_removed_from_compare</product_removed_from_compare>
+                <product_added_to_wishlist>magento product_added_to_wishlist</product_added_to_wishlist>
+                <product_removed_from_wishlist>magento product_removed_from_wishlist</product_removed_from_wishlist>
+                <product_purchased>magento product_purchased</product_purchased>
+                <product_review_read>magento product_review_read</product_review_read>
+                <product_review_posted>magento product_review_posted</product_review_posted>
+                <sendfriend_product>magento sendfriend_product</sendfriend_product>
+            </woopra_events>
+        </woopra_analytics>
+    </default>
+</config>

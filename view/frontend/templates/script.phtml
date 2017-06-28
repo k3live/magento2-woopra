@@ -1,0 +1,365 @@
+<?php
+
+/**
+ * Woopra Module for Magento
+ *
+ * @package   Woopra_Analytics
+ * @author    K3Live for Woopra <support@woopra.com>
+ * @copyright 2017 Copyright (c) Woopra (http://www.woopra.com/)
+ * @license   Open Software License (OSL 3.0)
+ */
+
+?>
+<?php if ($block->getSetting('enabled')) { ?>
+<!-- Start of Woopra Code -->
+<script type="text/javascript">
+//<![CDATA[
+<?php echo '!function(){var a,b,c,d=window,e=document,f=arguments,g="script",h=["config","track","trackForm",'.
+'"trackClick","identify","visit","push","call"],i=function(){var a,b=this,c=function(a){b[a]=function()'.
+'{return b._e.push([a].concat(Array.prototype.slice.call(arguments,0))),b}};for(b._e=[],a=0;a<h.length;a++)'.
+'c(h[a])};for(d.__woo=d.__woo||{},a=0;a<f.length;a++)d.__woo[f[a]]=d[f[a]]=d[f[a]]||new i;b=e.createElement(g),'.
+'b.async=1,b.src="//static.woopra.com/js/w.js",c=e.getElementsByTagName(g)[0],c.parentNode.insertBefore(b,c)}'.
+'("woopra");'."\n"; ?>
+    woopra.config('app', 'magento');
+<?php if ($block->getSetting('tracking_cookie_expiration') != null) {
+    ?>    var expires = new Date();<?php echo "\n"; ?>
+    expires.setDate(expires.getDate() + <?php
+        echo $block->escaper->escapeJsQuote($block->getSetting('tracking_cookie_expiration')); ?>);
+    woopra.config('cookie_expire', expires);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('tracking_cookie_name') != null) {
+    ?>    woopra.config('cookie_name', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('tracking_cookie_name')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('tracking_cookie_domain') != null) {
+    ?>    woopra.config('cookie_domain', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('tracking_cookie_domain')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('tracking_cookie_path') != null) {
+    ?>    woopra.config('cookie_path', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('tracking_cookie_path')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('ping') == 0) {
+    ?>    woopra.config('ping', false);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('ping_interval') != null && $block->getSetting('ping') == 1) {
+    ?>    woopra.config('ping_interval', <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('ping_interval')); ?>);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('download_tracking') == 1) {
+    ?>    woopra.config('download_tracking', true);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('download_tracking_pause') != null && $block->getSetting('download_tracking') == 1) {
+    ?>    woopra.config('download_pause', <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('download_tracking_pause')); ?>);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('outgoing_tracking') == 1) {
+    ?>    woopra.config('outgoing_tracking', true);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('outgoing_tracking_pause') != null && $block->getSetting('outgoing_tracking') == 1) {
+    ?>    woopra.config('outgoing_pause', <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('outgoing_tracking_pause')); ?>);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('outgoing_ignore_subdomain') == 0) {
+    ?>    woopra.config('outgoing_ignore_subdomain', false);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('hide_campaign') == 1) {
+    ?>    woopra.config('hide_campaign', true);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('hostname') != null) {
+    ?>    woopra.config('domain', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('hostname')); ?>');<?php echo "\n"; ?>
+<?php } else {
+    ?>    woopra.config('domain', '');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('visitor_timeout') != null) {
+    ?>    woopra.config('idle_timeout', <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('visitor_timeout')) * 60 * 1000; ?>);<?php echo "\n"; ?>
+<?php } else {
+    ?>    woopra.config('idle_timeout', 1800000);<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('subdomain') != null) {
+    ?>    woopra.identify('subdomain', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('subdomain')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_name') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_name_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_name')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_email') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_email_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_email')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_success_guest_trigger') == 1) {
+    ?>
+<?php if ($block->getSetting('woopra_checkout_success_guest_name') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_name_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_guest_name')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_success_guest_email') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_email_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_guest_email')); ?>');<?php echo "\n";
+}
+} ?>
+<?php if ($block->getSetting('customer_company') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_company_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_company')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_location') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_location_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_location')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_phone') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_phone_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_phone')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_group') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_group_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_group')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_lifetime_sales') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_lifetime_sales_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_lifetime_sales')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_number_orders') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_number_orders_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_number_orders')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_create_date') != null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_create_date_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_create_date')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_cart_items') !== null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_cart_items_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_cart_items')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_cart_total') !== null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_cart_total_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_cart_total')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_wishlist_items') !== null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_items_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_items')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('customer_wishlist_total') !== null) {
+    ?>    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_total_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_total')); ?>');<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('track_url_parameters') == 1) {
+    ?>    woopra.config('ignore_query_url', false);<?php echo "\n"; ?>
+    woopra.track('pv', {url: window.location.pathname+window.location.search, title: document.title});<?php echo
+    "\n"; ?>
+<?php } else {
+    ?>    woopra.track();<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_cart_wishlist_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cart_wishlist_status')); ?>',
+        product_name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cart_wishlist_name')); ?>',
+        product_sku: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cart_wishlist_sku')); ?>',
+        product_price: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cart_wishlist_price')); ?>'
+<?php if ($block->getSetting('woopra_product_review_trigger') == 1) {
+            ?>,
+<?php if ($block->getSetting('woopra_product_review_trigger') == 1) {
+    ?>
+        review_nickname: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_product_review_nickname')); ?>',
+        review_title: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_product_review_title')); ?>',
+        review_detail: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_product_review_detail')); ?>'<?php
+} ?>
+<?php } echo "\n";?>
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_subscriber_changed') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_subscriber_status')); ?>',
+        email: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_subscriber_email')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_contacts_index_post') == 1) {
+    ?>
+<?php if ($block->getSetting('customer_group') == "NOT LOGGED IN") {
+    ?>
+    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_name_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_name')); ?>');<?php echo "\n"; ?>
+    woopra.identify('<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_email_output')); ?>', '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_email')); ?>');<?php echo "\n"; ?>
+<?php } ?>
+    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getContactFormSent()); ?>',
+        customer_name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_name')); ?>',
+        customer_email: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_email')); ?>',
+        customer_telephone: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_telephone')); ?>',
+        customer_comment: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_contacts_comment')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_search_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php
+        echo $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getCatalogSearch()); ?>',
+        keywords: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_search_keywords')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_cms_noroute_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getCmsNoRoute()); ?>',
+        path: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cms_noroute_path')); ?>',
+        url: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_cms_noroute_url')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_forgot_password_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getForgotPassword()); ?>',
+        email: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_forgot_password_email')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_estimate_post_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getEstimatePost()); ?>',
+        country: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_estimate_post_country')); ?>',
+        state: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_estimate_post_state')); ?>',
+        zip: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_estimate_post_zip')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_password_changed_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getChangedPassword()); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_create_account_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getCustomerCreateAccount()); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_create_account_success_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->
+        escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getCustomerCreateAccountSuccess()); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_coupon_code_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_coupon_code_status')); ?>',
+        coupon_code: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_coupon_code')); ?>',
+        coupon_code_active: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_coupon_code_active')); ?>',
+        coupon_code_name: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_coupon_code_name')); ?>',
+        coupon_code_validity: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_coupon_code_validity')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_login_logout_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo $block->escaper->escapeJsQuote($block->getSetting('woopra_login_logout_status')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_sendfriend_product_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getProductEmailToFriend()); ?>',
+        product_name: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_sendfriend_product_name')); ?>',
+        product_sku: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_sendfriend_product_sku')); ?>',
+        product_price: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_sendfriend_product_price')); ?>'
+<?php echo "    });\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_success_trigger') == 1) {
+    ?>    woopra.track({<?php echo "\n";?>
+        name: '<?php echo
+        $block->escaper->escapeJsQuote($this->helper('Woopra\Analytics\Helper\Data')->getCheckoutSuccess()); ?>',
+<?php if ($block->getSetting('woopra_checkout_success_coupon_code') != null) {
+    ?>        coupon_code: '<?php echo
+    $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_coupon_code')); ?>',<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_success_discount_amount') != 0) {
+    ?>        discount_amount: '<?php echo
+    $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_discount_amount')); ?>',<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_payment_cc_type') != null) {
+    ?>        payment_cc_type: '<?php echo
+    $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_payment_cc_type')); ?>',<?php echo "\n";
+} ?>
+<?php if ($block->getSetting('woopra_checkout_success_profit') != null) {
+    ?>        profit: '<?php echo
+    $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_profit')); ?>',<?php echo "\n";
+}
+?>
+        order_id: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_order_id')); ?>',
+        subtotal: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_order_subtotal')); ?>',
+        total: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_order_total')); ?>',
+        weight: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_order_weight')); ?>',
+        payment_method: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_payment_method')); ?>',
+        shipping_amount: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_shipping_amount')); ?>',
+        shipping_method: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_shipping_description')); ?>',
+        total_items_ordered: '<?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('woopra_checkout_success_total_items_ordered')); ?>'
+<?php echo "    });\n";
+}
+?>
+<?php if ($block->getSetting('woopra_checkout_success_trigger') == 1) {
+    echo $block->getCheckoutDetails();
+} ?>
+</script>
+<?php if ($block->getSetting('test')) { ?>
+<script type="text/javascript">
+    alert('Woopra module is correctly installed, you can safely turn off the test alert.\n' +
+        'Data available to Woopra:\n' +
+        'Name: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_name')); ?>\n' +
+        'Email: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_email')); ?>\n' +
+        'Company: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_company')); ?>\n' +
+        'Location: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_location')); ?>\n' +
+        'Phone: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_phone')); ?>\n' +
+        'Group: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_group')); ?>\n' +
+        'Lifetime Sales: <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_lifetime_sales')); ?>\n' +
+        'Number of Orders: <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_number_orders')); ?>\n' +
+        'Account Create Date: <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_create_date')); ?>\n' +
+        'Cart Items: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_cart_items')); ?>\n' +
+        'Cart Total: <?php echo $block->escaper->escapeJsQuote($block->getSetting('customer_cart_total')); ?>\n' +
+        'Wishlist Items: <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_items')); ?>\n' +
+        'Wishlist Total: <?php echo
+        $block->escaper->escapeJsQuote($block->getSetting('customer_wishlist_total')); ?>\n');
+//]]>
+</script><?php } ?>
+<!-- End of Woopra Code -->
+<?php } ?>
