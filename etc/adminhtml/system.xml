@@ -18,7 +18,7 @@
             <label>Woopra Analytics</label>
             <tab>woopra</tab>
             <resource>Woopra_Analytics::woopra_analytics</resource>
-            <group id="woopra_basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" expanded="1">
+            <group id="woopra_basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Basic Woopra Setup</label>
                 <field id="enabled" translate="" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Module</label>
@@ -38,7 +38,7 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
-            <group id="woopra_advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+            <group id="woopra_advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Advanced Woopra Setup</label>
                 <field id="subdomain" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Subdomain</label>
@@ -46,7 +46,7 @@
                         Enter subdomain to track (ie: subdomain).
                     </comment>
                 </field>
-                <field id="visitor_timeout" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                <field id="visitor_timeout" translate="" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Visitor Timeout</label>
                     <comment>
                         The idle time in minutes after which visitors are considered no longer on your website (Default: 30)
@@ -59,7 +59,7 @@
                         Include queries in the url (Default No)
                     </comment>
                 </field>
-                <field id="tracking_cookie_expiration" translate="" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                <field id="tracking_cookie_expiration" translate="" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Tracking Cookie Expiration</label>
                     <comment>
                         The tracking cookie expiration in days (Default: 730)
@@ -90,7 +90,7 @@
                         Enable/Disable the periodic pings (Default: Enable)
                     </comment>
                 </field>
-                <field id="ping_interval" translate="" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                <field id="ping_interval" translate="" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Ping Interval</label>
                     <comment>
                         Change ping interval (Default: 12000 milliseconds)
@@ -103,7 +103,7 @@
                         Enable/Disable download tracking (Default: Disable)
                     </comment>
                 </field>
-                <field id="download_tracking_pause" translate="" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                <field id="download_tracking_pause" translate="" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Download Tracking Pause</label>
                     <comment>
                         Change download pause to guarantee the tracking request is sent (Default: 200 milliseconds)
@@ -116,7 +116,7 @@
                         Enable/Disable outgoing links tracking (Default: Disable)
                     </comment>
                 </field>
-                <field id="outgoing_tracking_pause" translate="" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1" validate="validate-digits">
+                <field id="outgoing_tracking_pause" translate="" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Outgoing Link Tracking Pause</label>
                     <comment>
                         Change outgoing link pause to guarantee the tracking request is sent (Default: 400 milliseconds)
@@ -137,7 +137,7 @@
                     </comment>
                 </field>
             </group>
-            <group id="woopra_outputs" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+            <group id="woopra_outputs" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Name/Disable Woopra Outputs</label>
                 <comment>You can disable outputs here that you do not want to use. On some servers a performance gain may be noticed by disabling unused calls.</comment>
                 <field id="name" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -219,7 +219,7 @@
                     </comment>
                 </field>
             </group>
-            <group id="woopra_events" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" expanded="0">
+            <group id="woopra_events" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Name/Disable Woopra Event Tracking</label>
                 <comment>You can disable event tracking here that you do not want to use. On some servers a performance gain may be noticed by disabling unused calls.</comment>
                 <field id="catalog_search" translate="" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
