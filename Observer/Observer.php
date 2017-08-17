@@ -264,7 +264,7 @@ class Observer implements ObserverInterface
         if ($this->request->getFullActionName() === 'customer_account_editPost' &&
             $this->dataHelper->getChangedPassword() != null) {
             $request = $this->request->getParams();
-            if ($request['change_password'] == 1 && $request['current_password'] != $request['password']) {
+            if (array_key_exists('change_password', $request) && $request['change_password'] == 1 && $request['current_password'] != $request['password']) {
                 $this->customerSession->setData('woopra_password_changed_trigger', 1);
             }
         }
