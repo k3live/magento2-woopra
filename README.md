@@ -8,7 +8,7 @@
 ### Step 1
 
 #### Using Composer
-composer require woopra/magento2-woopra
+composer require k3live/magento2-woopra
 
 #### Manually
 Download the extension
