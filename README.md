@@ -8,7 +8,7 @@
 ### Step 1
 
 #### Using Composer
-composer require k3live/magento2-woopra
+composer require woopra/analytics-m2
 
 #### Manually
 Download the extension
